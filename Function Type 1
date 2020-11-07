@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<conio.h>
+void display()
+{
+
+    int a,b,sum;
+    printf("\nEnter 2 Integer:");
+    scanf("%d%d",&a,&b);
+    sum=a+b;
+    printf("Addition=%d",sum);
+
+}
+ int main()
+{
+
+    void display();
+
+    printf("The program of addition using function");
+    display();
+    getch();
+
+}
