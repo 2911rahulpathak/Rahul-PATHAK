@@ -1,0 +1,130 @@
+#include<iostream>
+using namespace std;
+//for multilevel inheritance//
+class person
+{
+    public:
+    char name[100],gender[8];
+    int age;
+    public:
+    void getdata()
+    {
+    cout<< "Enter your name :"<<endl;
+    cin>>name;
+    cout<<"Enter your gender :"<<endl;
+    cin>>gender;
+    cout<<"enter your age :"<<endl;
+    cin>>age;
+
+    }
+    void display()
+    {
+    cout<<"NAME :"<<name<<endl;
+    cout<<"GENDER :"<<gender<<endl;
+    cout<<"AGE :"<<age<<endl;
+    }
+};
+class employee:public person
+{
+    char company[50];
+    float salary;
+    public:
+    void getdata()
+    {
+    person::getdata();
+    cout<<"ENTER THE NAME OF COMPANY :";
+    cin>>company;
+    cout<<" ENTER SALARY :";
+    cin>>salary;
+    }
+    void display()
+    {
+    person::display();
+    cout<<"COMPANY NAME:"<<company<<endl;
+    cout<<"SALARY :"<<salary<<endl;
+    }
+} ;
+class data:public employee
+{
+    int number;
+    public:
+    void getdata()
+    {
+    employee::getdata();
+    cout<<"enter the number :";
+    cin>>number;
+    }
+    void display()
+    {
+    employee::display();
+    cout<<"THE NUMBER IS :"<<number<<endl;
+    }
+};
+//end//
+//for single inheritance//
+class area
+{
+    public:
+    int getarea(int l ,int b)
+    {
+       return l*b;
+    }
+};
+class perimeter
+{
+    public:
+    int getperimeter(int l , int b)
+    {
+        return 2*(l*b);
+    }
+};
+class rectangle:public area, public perimeter
+{   public:
+    int length;
+    int breadth;
+    public:
+    rectangle()
+    {
+        length=5;
+        breadth=9;
+    }
+    int area()
+    {
+    return area::getarea(length,breadth);
+    }
+    int perimeter()
+    {
+    return perimeter::getperimeter(length,breadth);
+    }
+};
+//end//
+
+int main()
+{
+char c;
+    cout<<"FOR EXECUTING MULTIPLE INHERITANCE ENTER A:"<<endl;
+    cout<<"FOR EXECUTING MULTILEVEL INHERITANCE ENTER B:"<<endl;
+    //cout<<"FOR EXECUTING SINGLE INHERITANCE ENTER C:"<<endl;//
+    cin>>c;
+    switch(c)
+{
+    case 'A' :
+    data a;
+    cout<<"Enter data:"<<endl;
+    a.getdata();
+    cout<<"displaying data:"<<endl;
+    a.display();
+    break;
+
+    case 'B' :
+    rectangle r;
+    cout<<"AREA :"<<r.area()<<endl;
+    cout<<"PERIMETER:"<<r.perimeter()<<endl;
+    break;
+
+
+}	/*end of switch statement*/
+
+return 0;
+
+}
